@@ -1,20 +1,32 @@
-float r = 75;
-float theta = 0;
- 
-void setup() {
-  size(800,700);
-  background(255);
+
+  float theta = PI*2/3;
+  float r = 40;
+  float rad = 10;
+  float diameter = 0.0;
+  
+void setup() 
+{
+  size(500,800);
 }
- 
-void draw() {
- 
-//Polar coordinates (r,theta) are converted to Cartesian (x,y) for use in the ellipse() function.
-  float x = r * sin(theta);
-  float y = r * cos(theta);
- 
+
+void draw() 
+{
+  background(500);
+
+  float x = r * cos(theta);
+  float y = r * sin(theta);
+
+  stroke(0);
+  line(width/2, height/2, x+width/2, y+height/2); 
+  noFill();
+  ellipse(x+width/2, y+height/2, rad, rad); // 
   noStroke();
   fill(0);
-  ellipse(x+width/2, y+height/2, 16, 16);
- 
-  theta += 0.01;
+
+  rad += 1.4; 
+  if (rad > 12.5)
+      rad = 12.5;
+  theta -= 0.015; 
+  if (theta < (PI*2/3)-1)
+      theta = PI*2/3;
 }
